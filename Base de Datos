@@ -1,0 +1,35 @@
+# Creacion de base de datos
+
+CREATE TABLE reconocimiento_facial.personas (
+    codigo INT PRIMARY KEY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    x INT,
+    y INT
+);
+
+ALTER TABLE reconocimiento_facial.personas DROP COLUMN codigo;
+ALTER TABLE reconocimiento_facial.personas ADD COLUMN codigo INT PRIMARY KEY AUTO_INCREMENT;
+
+
+CREATE TABLE reconocimiento_facial.registros (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    codigo INT PRIMARY KEY AUTO_INCREMENT,
+    fecha DATE,
+    hora TIME,
+    anotacion TEXT,
+    FOREIGN KEY (codigo) REFERENCES registros.personas(codigo)
+);
+
+
+ALTER TABLE reconocimiento_facial.personas ADD w INT;
+ALTER TABLE reconocimiento_facial.personas ADD h INT; 
+
+
+select * from reconocimiento_facial.personas;
+select * from reconocimiento_facial.registros;
+
+
+// Como comentario se recuerdan de agregar este archivo en la misma carpeta donde tengan los archivos 
+
+
+haarcascade_frontalface_default.xml
